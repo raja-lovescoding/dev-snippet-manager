@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to your Dashboard, <%= user.email %>!</h1>
+        <a href="/logout" class="logout-link">Logout</a>
+    </header>
+    <main>
+        <section class="add-snippet">
+            <form action="/dashboard/add" method="POST">
+                <input type="text" name="title" placeholder="Snippet Title" required>
+                <textarea name="code" placeholder="Snippet Content" required></textarea>
+                <select name="language">
+                    <option value="javascript">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="sql">SQL</option>
+                    <option value="html">HTML</option>
+                    <option value="cpp">C++</option>
+                    <option value="java">Java</option>
+                </select>
+                <button type="submit" class="add-btn">Add Snippet</button>
+            </form>
+        </section>
+
+        <section class="my-snippets">
+            <h2>Your Saved Snippets</h2>
+            <% if(snippets.length > 0) { %>
+                <% snippets.forEach(snippet => { %>
+                    <div class="snippet-card">
+                        <div class="card-header">
+                            <h3><%= snippet.title %> <span class="badge"><%= snippet.language %></span></h3>
+                            <button class="copy-btn" onclick="copyToClipboard('<%= snippet._id %>')">Copy</button>
+                        </div>
+                        
+                        <pre><code id="code-<%= snippet._id %>" class="language-<%= snippet.language %>"><%= snippet.code %></code></pre>
+                        
+                        <div class="card-footer">
+                            <small>Created on: <%= snippet.createdAt.toDateString() %></small>
+                            <form action="/dashboard/delete/<%= snippet._id %>" method="POST">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>No snippets found. Start adding some!</p>
+            <% } %>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+    hljs.highlightAll();
+
+    async function copyToClipboard(id) {
+        // Find the specific code block
+        const codeText = document.getElementById(`code-${id}`).innerText;
+        // Identify which button was clicked
+        const btn = event.currentTarget; 
+        
+        try {
+            await navigator.clipboard.writeText(codeText);
+            const originalText = btn.innerText;
+            btn.innerText = "Copied!";
+            btn.classList.add('success');
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove('success');
+            }, 2000);
+        } catch (err) {
+            console.error('Failed to copy!', err);
+        }
+    }
+    </script>
+</body>
+</html>

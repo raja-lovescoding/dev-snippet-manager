@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    background: #e74c3c;
+    border-radius: 4px;
+    margin-left: 10px;
+    transition: background 0.3s;
+}
+
+header a:hover {
+    background: #c0392b;
+}
+
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.add-snippet {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
+.add-snippet form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-snippet input[type="text"],
+.add-snippet textarea,
+.add-snippet select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+.add-snippet input[type="text"]:focus,
+.add-snippet textarea:focus,
+.add-snippet select:focus {
+    outline: none;
+    border: 2px solid #667eea;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    padding: 12px;
+    resize: vertical;
+}
+
+.add-snippet button {
+    padding: 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.add-snippet button:hover {
+    background: #5568d3;
+}
+
+.my-snippets {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.my-snippets h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.snippet-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-left: 5px solid #667eea;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.snippet-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.snippet-card h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.hljs {
+    background: transparent;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+}
+
+.badge {
+    font-size: 0.8rem;
+    background: #667eea;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-left: 10px;
+}
+
+.snippet-card small {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.my-snippets > p {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+}
+
+
+
+
+/* Align Title and Copy Button */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.copy-btn {
+    background: #666;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.copy-btn.success {
+    background: #28a745 !important;
+}
+
+/* Align Date and Delete Button */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #d9534f;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.delete-btn:hover {
+    text-decoration: underline;
+}
