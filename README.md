@@ -21,7 +21,8 @@ A full-stack web application designed for developers to manage and store code sn
 The app follows the **MVC (Model-View-Controller)** pattern to ensure a clean separation of concerns between database logic and routing.
 
 ## 🚀 How to Run Locally
-1. Clone the repo: `git clone <https://github.com/raja-lovescoding/dev-snippet-manager>`
+0. Link of the repo: `https://github.com/raja-lovescoding/dev-snippet-manager`
+1. Clone the repo: `git clone link of the repo`
 2. Install dependencies: `npm install`
 3. Create a `.env` file with your PG and MongoDB credentials.
 4. Setup the PostgreSQL table using the provided schema.
